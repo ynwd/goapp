@@ -1,9 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"embed"
+	"fmt"
+)
+
+//go:embed tes.xml
+var templateDir embed.FS
 
 func GetName() string {
-	return "hello"
+	b, _ := templateDir.ReadFile("tes.xml")
+	return string(b)
 }
 
 func main() {
